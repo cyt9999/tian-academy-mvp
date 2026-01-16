@@ -1,0 +1,8 @@
+{
+  "name": "Tian Academy MVP",
+  "description": "A high-end financial education platform for Tian Academy, featuring AI-powered learning, options strategy simulation, and community assignment tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
