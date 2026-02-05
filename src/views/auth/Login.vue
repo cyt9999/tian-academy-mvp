@@ -2,10 +2,12 @@
 import { onBeforeMount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import useTokenStore from '@/stores/token'
+import useAuthStore from '@/stores/auth'
 
 const route = useRoute()
 const router = useRouter()
 const tokenStore = useTokenStore()
+const authStore = useAuthStore()
 
 onBeforeMount(async () => {
   const isLoginReturn =
@@ -19,6 +21,7 @@ onBeforeMount(async () => {
   localStorage.setItem('cmToken', userData.access_token)
 
   if (userData) {
+    authStore.setLoginState(true)
     router.push('/')
   }
 })

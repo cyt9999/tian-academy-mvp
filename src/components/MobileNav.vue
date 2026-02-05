@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { LayoutDashboard, BookOpen, FlaskConical, PiggyBank, ClipboardCheck, Bot } from 'lucide-vue-next'
+import { LayoutDashboard, BookOpen, FlaskConical, PiggyBank, ClipboardCheck, Bot, User } from 'lucide-vue-next'
 import MobileNavLink from './MobileNavLink.vue'
 
 const route = useRoute()
@@ -25,6 +25,9 @@ const route = useRoute()
     </MobileNavLink>
     <MobileNavLink to="/ai" label="AI" :active="route.path === '/ai'">
       <template #icon><Bot :size="20" /></template>
+    </MobileNavLink>
+    <MobileNavLink to="/profile" label="檔案" :active="route.path === '/profile'">
+      <template #icon><User :size="20" /></template>
     </MobileNavLink>
   </nav>
 </template>
