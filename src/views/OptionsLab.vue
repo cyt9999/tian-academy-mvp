@@ -25,8 +25,8 @@ import {
   ChevronRight,
   Binary
 } from 'lucide-vue-next'
-import { MOCK_TICKERS } from '../../constants'
-import type { StrategyType } from '../../types'
+import { MOCK_TICKERS } from '@/constants'
+import type { StrategyType } from '@/types'
 import { fetchStockPrice } from '../services/stockService'
 
 use([CanvasRenderer, LineChart, GridComponent, TooltipComponent, MarkLineComponent])

@@ -2,7 +2,7 @@
 import { ref, watch, nextTick } from 'vue'
 import { X, Send, RefreshCw, ExternalLink } from 'lucide-vue-next'
 import { askTianAI } from '../services/geminiService'
-import type { Message } from '../../types'
+import type { Message } from '@/types'
 
 const TIAN_AVATAR = "https://yt3.googleusercontent.com/nDtRiMCLFt8YctXzJVUr2ZJ0d43GW_x9CRScw1C_pVqFkxh1fxu0dXqy7kk6ws-0jtmgChQLsw=s900-c-k-c0x00ffffff-no-rj"
 

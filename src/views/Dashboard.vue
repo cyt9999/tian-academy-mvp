@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TrendingUp, Users, Award, Play, AlertCircle, Calendar, Clock, Plus } from 'lucide-vue-next'
-import { MOCK_LESSONS } from '../../constants'
+import { MOCK_LESSONS } from '@/constants'
 
 const TIAN_AVATAR = "https://yt3.googleusercontent.com/nDtRiMCLFt8YctXzJVUr2ZJ0d43GW_x9CRScw1C_pVqFkxh1fxu0dXqy7kk6ws-0jtmgChQLsw=s900-c-k-c0x00ffffff-no-rj"
 

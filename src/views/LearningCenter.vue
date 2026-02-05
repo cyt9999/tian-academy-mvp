@@ -11,8 +11,8 @@ import {
   Save,
   Check
 } from 'lucide-vue-next'
-import { MOCK_LESSONS } from '../../constants'
-import type { Lesson } from '../../types'
+import { MOCK_LESSONS } from '@/constants'
+import type { Lesson } from '@/types'
 
 const route = useRoute()
 const router = useRouter()

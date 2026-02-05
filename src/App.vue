@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   LayoutDashboard,
@@ -21,6 +21,10 @@ import FloatingAI from './components/FloatingAI.vue'
 const route = useRoute()
 const isCollapsed = ref(false)
 
+// Auth routes render minimal layout (no sidebar/navbar)
+const authPaths = ['/login', '/logout', '/renew']
+const isAuthRoute = computed(() => authPaths.includes(route.path))
+
 // Auto-collapse sidebar when viewing a lesson
 watch(() => route.path, (currentPath) => {
   const isLessonDetail = currentPath.includes('/academy/lesson/')
@@ -31,7 +35,13 @@ watch(() => route.path, (currentPath) => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col md:flex-row bg-slate-950 text-slate-200 selection:bg-emerald-500/30">
+  <!-- Minimal layout for auth callback routes -->
+  <div v-if="isAuthRoute" class="min-h-screen flex items-center justify-center bg-slate-950 text-slate-200">
+    <router-view />
+  </div>
+
+  <!-- Full app shell for everything else -->
+  <div v-else class="min-h-screen flex flex-col md:flex-row bg-slate-950 text-slate-200 selection:bg-emerald-500/30">
     <!-- Desktop Sidebar -->
     <aside
       :class="[
