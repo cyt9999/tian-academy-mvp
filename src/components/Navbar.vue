@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Bell } from 'lucide-vue-next'
-
-const TIAN_AVATAR = "https://yt3.googleusercontent.com/nDtRiMCLFt8YctXzJVUr2ZJ0d43GW_x9CRScw1C_pVqFkxh1fxu0dXqy7kk6ws-0jtmgChQLsw=s900-c-k-c0x00ffffff-no-rj"
+import UserInfo from './UserInfo.vue'
 </script>
 
 <template>
@@ -22,9 +21,7 @@ const TIAN_AVATAR = "https://yt3.googleusercontent.com/nDtRiMCLFt8YctXzJVUr2ZJ0d
         <Bell :size="18" />
         <span class="absolute top-2 right-2.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
       </button>
-      <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center cursor-pointer hover:border-emerald-500 transition-all overflow-hidden">
-        <img :src="TIAN_AVATAR" alt="Tian" class="w-full h-full object-cover" />
-      </div>
+      <UserInfo />
     </div>
   </header>
 </template>

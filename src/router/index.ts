@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Academy from '../views/Academy.vue'
 import LearningCenter from '../views/LearningCenter.vue'
@@ -9,14 +9,18 @@ import Assignments from '../views/Assignments.vue'
 import AIAssistant from '../views/AIAssistant.vue'
 import Glossary from '../views/Glossary.vue'
 import StrategyLibrary from '../views/StrategyLibrary.vue'
+import useTokenStore from '@/stores/token'
+import checkUserToken from '@/plugins/oidc/checkUserToken'
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
-    { path: '/', component: Dashboard },
+    // App routes (auth required)
+    { path: '/', component: Dashboard, meta: { requiresAuth: true } },
     {
       path: '/academy',
       component: Academy,
+      meta: { requiresAuth: true },
       children: [
         { path: '', component: LearningCenter },
         { path: 'lesson/:id', component: LearningCenter },
@@ -25,13 +29,44 @@ const router = createRouter({
         { path: 'resources', component: () => import('../views/AcademyResources.vue') },
       ]
     },
-    { path: '/lab', component: OptionsLab },
-    { path: '/strategies', component: StrategyLibrary },
-    { path: '/glossary', component: Glossary },
-    { path: '/calculator', component: RetirementCalculator },
-    { path: '/assignments', component: Assignments },
-    { path: '/ai', component: AIAssistant },
+    { path: '/lab', component: OptionsLab, meta: { requiresAuth: true } },
+    { path: '/strategies', component: StrategyLibrary, meta: { requiresAuth: true } },
+    { path: '/glossary', component: Glossary, meta: { requiresAuth: true } },
+    { path: '/calculator', component: RetirementCalculator, meta: { requiresAuth: true } },
+    { path: '/assignments', component: Assignments, meta: { requiresAuth: true } },
+    { path: '/ai', component: AIAssistant, meta: { requiresAuth: true } },
+
+    // Auth routes (no auth required)
+    {
+      path: '/login',
+      component: () => import('../views/auth/Login.vue'),
+    },
+    {
+      path: '/logout',
+      component: () => import('../views/auth/Logout.vue'),
+    },
+    {
+      path: '/renew',
+      component: () => import('../views/auth/Renew.vue'),
+    },
   ]
+})
+
+router.beforeEach(async (to, from, next) => {
+  const tokenStore = useTokenStore()
+
+  if (to.meta.requiresAuth) {
+    const token = localStorage.getItem('cmToken')
+
+    if (token) {
+      await checkUserToken()
+      next()
+    } else {
+      tokenStore.loginRedirectUnityPage()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

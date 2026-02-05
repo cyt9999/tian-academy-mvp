@@ -2,7 +2,7 @@
 import { ref, nextTick, watch } from 'vue'
 import { Send, Bot, Sparkles, ExternalLink, RefreshCw } from 'lucide-vue-next'
 import { askTianAI } from '../services/geminiService'
-import type { Message } from '../../types'
+import type { Message } from '@/types'
 
 const messages = ref<Message[]>([
   {

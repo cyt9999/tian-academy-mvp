@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Book, Shield, TrendingUp, Zap, Target, Star, Search, ArrowRight, Info } from 'lucide-vue-next'
-import { STRATEGY_MATRIX } from '../../constants'
+import { STRATEGY_MATRIX } from '@/constants'
 
 const strategies = [
   {
