@@ -11,7 +11,8 @@ import {
   PiggyBank,
   Library,
   BookMarked,
-  Bot
+  Bot,
+  User
 } from 'lucide-vue-next'
 import SidebarLink from './components/SidebarLink.vue'
 import Navbar from './components/Navbar.vue'
@@ -74,6 +75,9 @@ watch(() => route.path, (currentPath) => {
           </SidebarLink>
           <SidebarLink to="/ai" label="天哥AI" :active="route.path === '/ai'" :collapsed="isCollapsed">
             <template #icon><Bot :size="20" /></template>
+          </SidebarLink>
+          <SidebarLink to="/profile" label="個人檔案" :active="route.path === '/profile'" :collapsed="isCollapsed">
+            <template #icon><User :size="20" /></template>
           </SidebarLink>
         </div>
 

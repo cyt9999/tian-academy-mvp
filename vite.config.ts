@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
             target: authHost,
             changeOrigin: true,
             secure: false,
+            rewrite: (path) => path.replace(/^\/api\/Profile/, '/Profile'),
           },
         },
       },

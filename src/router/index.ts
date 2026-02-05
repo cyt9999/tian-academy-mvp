@@ -7,6 +7,7 @@ import OptionsLab from '../views/OptionsLab.vue'
 import RetirementCalculator from '../views/RetirementCalculator.vue'
 import Assignments from '../views/Assignments.vue'
 import AIAssistant from '../views/AIAssistant.vue'
+import Profile from '../views/Profile.vue'
 import Glossary from '../views/Glossary.vue'
 import StrategyLibrary from '../views/StrategyLibrary.vue'
 import useTokenStore from '@/stores/token'
@@ -35,6 +36,7 @@ const router = createRouter({
     { path: '/calculator', component: RetirementCalculator, meta: { requiresAuth: true } },
     { path: '/assignments', component: Assignments, meta: { requiresAuth: true } },
     { path: '/ai', component: AIAssistant, meta: { requiresAuth: true } },
+    { path: '/profile', component: Profile, meta: { requiresAuth: true } },
 
     // Auth routes (no auth required)
     {
