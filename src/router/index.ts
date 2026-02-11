@@ -13,8 +13,10 @@ import StrategyLibrary from '../views/StrategyLibrary.vue'
 import useTokenStore from '@/stores/token'
 import checkUserToken from '@/plugins/oidc/checkUserToken'
 
+const { VITE_BASE_URL: baseUrl, VITE_CLIENT_ID: clientId } = import.meta.env
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_BASE_URL),
+  history: createWebHistory(baseUrl),
   routes: [
     // App routes (auth required)
     { path: '/', component: Dashboard, meta: { requiresAuth: true } },
@@ -58,7 +60,7 @@ router.beforeEach(async (to, from, next) => {
   const tokenStore = useTokenStore()
 
   if (to.meta.requiresAuth) {
-    const token = localStorage.getItem('cmToken')
+    const token = localStorage.getItem(`${clientId}-token`)
 
     if (token) {
       await checkUserToken()

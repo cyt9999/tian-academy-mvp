@@ -91,7 +91,7 @@ export default defineStore('token', () => {
 
   // 登出轉導至統一登入頁面
   function logoutRedirectUnityPage() {
-    localStorage.removeItem('cmToken')
+    localStorage.removeItem(`${import.meta.env.VITE_CLIENT_ID}-token`)
     getManager.value.signoutRedirect()
   }
 

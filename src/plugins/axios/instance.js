@@ -10,7 +10,9 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem('cmToken')
+    const token = localStorage.getItem(
+      `${import.meta.env.VITE_CLIENT_ID}-token`,
+    )
 
     return {
       ...config,

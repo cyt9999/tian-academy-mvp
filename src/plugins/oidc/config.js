@@ -5,17 +5,14 @@ const {
   VITE_CLIENT_ID: clientId,
 } = import.meta.env;
 
-// When baseUrl is just "/", avoid double-slash in URIs
-const base = baseUrl === '/' ? '' : baseUrl;
-
 export default {
   authority: authHost,
   client_id: clientId,
   response_type: 'code',
   scope: 'openid nickname',
-  redirect_uri: `${appHost}${base}/login`,
-  post_logout_redirect_uri: `${appHost}${base}/logout`,
-  silent_redirect_uri: `${appHost}${base}/renew`,
+  redirect_uri: `${appHost}${baseUrl}/login`,
+  post_logout_redirect_uri: `${appHost}${baseUrl}/logout`,
+  silent_redirect_uri: `${appHost}${baseUrl}/renew`,
   accessTokenExpiringNotificationTime: 10,
   automaticSilentRenew: true,
   filterProtocolClaims: false,

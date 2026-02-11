@@ -1,6 +1,5 @@
 import { jwtDecode } from 'jwt-decode'
 import useTokenStore from '@/stores/token'
-import useAuthStore from '@/stores/auth'
 
 export default async () => {
   const tokenStore = useTokenStore()
@@ -22,10 +21,10 @@ export default async () => {
         rt: userData.refresh_token,
       }
       tokenStore.updateToken(userToken)
-      localStorage.setItem('cmToken', userToken.at)
-
-      const authStore = useAuthStore()
-      authStore.setLoginState(true)
+      localStorage.setItem(
+        `${import.meta.env.VITE_CLIENT_ID}-token`,
+        userToken.at,
+      )
     }
   } else {
     // 刪除使用者紀錄，防止有重複使用者紀錄的可能

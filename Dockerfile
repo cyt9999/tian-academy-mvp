@@ -19,10 +19,10 @@ ARG VITE_APP_HOST=https://tian-academy-mvp-200769462647.asia-east1.run.app
 ARG VITE_AUTH_HOST=https://development-auth.cmoney.tw
 ARG GEMINI_API_KEY
 
-# Write a .env file so Vite picks up the values
+# Write build args to .env.production (highest priority for vite build)
 RUN printf "VITE_ENV=%s\nVITE_APP_ID=%s\nVITE_CLIENT_ID=%s\nVITE_BASE_URL=%s\nVITE_APP_HOST=%s\nVITE_AUTH_HOST=%s\nGEMINI_API_KEY=%s\n" \
     "$VITE_ENV" "$VITE_APP_ID" "$VITE_CLIENT_ID" "$VITE_BASE_URL" "$VITE_APP_HOST" "$VITE_AUTH_HOST" "$GEMINI_API_KEY" \
-    > .env
+    > .env.production
 
 RUN npm run build
 
