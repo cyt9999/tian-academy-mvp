@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'VITE_ENV=production'
+      - '--build-arg'
+      - 'VITE_APP_HOST=https://us-creators.cmoney.tw'
+      - '--build-arg'
+      - 'VITE_AUTH_HOST=https://auth.cmoney.tw'
+      - '-t'
+      - 'asia-east1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/tian-academy-production:latest'
+      - '.'
+images:
+  - 'asia-east1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/tian-academy-production:latest'
