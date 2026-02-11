@@ -11,11 +11,11 @@ RUN npm ci
 COPY . .
 
 # Accept build-time env vars (Vite inlines VITE_* at build time)
-ARG VITE_ENV=production
+ARG VITE_ENV=development
 ARG VITE_APP_ID=3018
 ARG VITE_CLIENT_ID=cm-sunglasssis-web
 ARG VITE_BASE_URL=/tian-compoudning
-ARG VITE_APP_HOST=https://tian-academy-mvp-200769462647.asia-east1.run.app
+ARG VITE_APP_HOST=https://vantage-stg.cmoney.tw
 ARG VITE_AUTH_HOST=https://development-auth.cmoney.tw
 ARG GEMINI_API_KEY
 
