@@ -18,10 +18,11 @@ ARG VITE_BASE_URL=/tian-compoudning
 ARG VITE_APP_HOST=https://vantage-stg.cmoney.tw
 ARG VITE_AUTH_HOST=https://development-auth.cmoney.tw
 ARG GEMINI_API_KEY
+ARG VITE_API_BASE_URL
 
 # Write build args to .env.production (highest priority for vite build)
-RUN printf "VITE_ENV=%s\nVITE_APP_ID=%s\nVITE_CLIENT_ID=%s\nVITE_BASE_URL=%s\nVITE_APP_HOST=%s\nVITE_AUTH_HOST=%s\nGEMINI_API_KEY=%s\n" \
-    "$VITE_ENV" "$VITE_APP_ID" "$VITE_CLIENT_ID" "$VITE_BASE_URL" "$VITE_APP_HOST" "$VITE_AUTH_HOST" "$GEMINI_API_KEY" \
+RUN printf "VITE_ENV=%s\nVITE_APP_ID=%s\nVITE_CLIENT_ID=%s\nVITE_BASE_URL=%s\nVITE_APP_HOST=%s\nVITE_AUTH_HOST=%s\nGEMINI_API_KEY=%s\nVITE_API_BASE_URL=%s\n" \
+    "$VITE_ENV" "$VITE_APP_ID" "$VITE_CLIENT_ID" "$VITE_BASE_URL" "$VITE_APP_HOST" "$VITE_AUTH_HOST" "$GEMINI_API_KEY" "$VITE_API_BASE_URL" \
     > .env.production
 
 RUN npm run build

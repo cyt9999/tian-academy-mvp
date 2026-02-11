@@ -52,11 +52,70 @@ export interface Message {
   };
 }
 
+// --- Homework System Types ---
+
+export interface UserProfile {
+  id: string;
+  cmoney_sub: string;
+  nickname: string | null;
+  role: 'student' | 'tutor';
+  created_at: string;
+}
+
 export interface Assignment {
   id: string;
+  tutor_id: string;
   title: string;
-  status: 'pending' | 'submitted' | 'graded';
-  grade?: string;
-  feedback?: string;
-  submittedAt?: string;
+  description: string | null;
+  attachment_url: string | null;
+  attachment_signed_url?: string;
+  due_date: string | null;
+  created_at: string;
+  updated_at: string;
+  tutor?: { nickname: string | null };
+  // Student-specific
+  my_submission?: SubmissionBrief | null;
+  // Tutor-specific
+  submission_count?: number;
+  submissions?: Submission[];
+}
+
+export interface SubmissionBrief {
+  assignment_id: string;
+  status: 'submitted' | 'graded';
+  grade: string | null;
+  submitted_at: string;
+}
+
+export interface Submission {
+  id: string;
+  assignment_id: string;
+  student_id: string;
+  file_url: string;
+  file_signed_url?: string;
+  file_name: string;
+  comment: string | null;
+  status: 'submitted' | 'graded';
+  grade: string | null;
+  feedback: string | null;
+  submitted_at: string;
+  graded_at: string | null;
+  updated_at: string;
+  student?: { id: string; nickname: string | null };
+}
+
+export interface Notification {
+  id: string;
+  user_id: string;
+  type: 'new_submission' | 'graded';
+  title: string;
+  message: string | null;
+  reference_id: string | null;
+  is_read: boolean;
+  created_at: string;
+}
+
+export interface NotificationResponse {
+  notifications: Notification[];
+  unreadCount: number;
 }

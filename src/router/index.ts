@@ -37,6 +37,7 @@ const router = createRouter({
     { path: '/glossary', component: Glossary, meta: { requiresAuth: true } },
     { path: '/calculator', component: RetirementCalculator, meta: { requiresAuth: true } },
     { path: '/assignments', component: Assignments, meta: { requiresAuth: true } },
+    { path: '/assignments/:id', component: () => import('../views/AssignmentDetail.vue'), meta: { requiresAuth: true } },
     { path: '/ai', component: AIAssistant, meta: { requiresAuth: true } },
     { path: '/profile', component: Profile, meta: { requiresAuth: true } },
 

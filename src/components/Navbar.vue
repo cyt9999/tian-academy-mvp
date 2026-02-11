@@ -1,6 +1,21 @@
 <script setup lang="ts">
-import { Bell } from 'lucide-vue-next'
+import { onMounted, onUnmounted } from 'vue'
 import UserInfo from './UserInfo.vue'
+import NotificationDropdown from './NotificationDropdown.vue'
+import { useUserStore } from '@/stores/user'
+import { useNotificationStore } from '@/stores/notifications'
+
+const userStore = useUserStore()
+const notificationStore = useNotificationStore()
+
+onMounted(() => {
+  userStore.fetchProfile()
+  notificationStore.startPolling()
+})
+
+onUnmounted(() => {
+  notificationStore.stopPolling()
+})
 </script>
 
 <template>
@@ -17,10 +32,7 @@ import UserInfo from './UserInfo.vue'
       <div class="hidden md:block px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-[9px] text-slate-500 font-black uppercase tracking-widest">
         MVP Terminal v1.0
       </div>
-      <button class="relative p-2 text-slate-500 hover:text-white transition-colors">
-        <Bell :size="18" />
-        <span class="absolute top-2 right-2.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
-      </button>
+      <NotificationDropdown />
       <UserInfo />
     </div>
   </header>
