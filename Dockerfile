@@ -14,8 +14,8 @@ COPY . .
 ARG VITE_ENV=production
 ARG VITE_APP_ID=3018
 ARG VITE_CLIENT_ID=cm-sunglasssis-web
-ARG VITE_BASE_URL=/
-ARG VITE_APP_HOST
+ARG VITE_BASE_URL=/tian-compoudning
+ARG VITE_APP_HOST=https://tian-academy-mvp-200769462647.asia-east1.run.app
 ARG VITE_AUTH_HOST=https://development-auth.cmoney.tw
 ARG GEMINI_API_KEY
 
@@ -35,8 +35,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 # Copy custom nginx config template
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Copy built assets from build stage
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy built assets from build stage into the base URL subdirectory
+COPY --from=build /app/dist /usr/share/nginx/html/tian-compoudning
 
 # Cloud Run sets PORT env var (default 8080)
 ENV PORT=8080
