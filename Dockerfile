@@ -39,6 +39,10 @@ COPY nginx.conf /etc/nginx/templates/default.conf.template
 # Copy built assets from build stage into the base URL subdirectory
 COPY --from=build /app/dist /usr/share/nginx/html/tian-compoudning
 
+# Re-declare ARG in production stage (ARGs don't persist across stages)
+ARG VITE_AUTH_HOST
+ENV AUTH_HOST=${VITE_AUTH_HOST:-https://development-auth.cmoney.tw}
+
 # Cloud Run sets PORT env var (default 8080)
 ENV PORT=8080
 EXPOSE 8080

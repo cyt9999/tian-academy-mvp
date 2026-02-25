@@ -1,8 +1,6 @@
 import { reactive } from 'vue'
 import api from '@/plugins/axios'
 
-const authHost = import.meta.env.VITE_AUTH_HOST
-
 const state = reactive({
   data: null,
   hasLoading: false,
@@ -19,7 +17,7 @@ async function setInit() {
     '{ email isBindingCellphone pCoin nickname signupDate signupUnixTimeMs bio contactEmail image levelInfo{exp level levelExp levelExpToNext} badges{badgeId isEquipped hasRead achievedCount}}'
 
   try {
-    const res = await api.POST(`${authHost}/Profile/graphql/query/member`, {
+    const res = await api.POST('/api/Profile/graphql/query/member', {
       fields,
     })
 

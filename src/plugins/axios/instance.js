@@ -43,6 +43,7 @@ instance.interceptors.response.use(
           console.log(error.message)
       }
     }
+    return Promise.reject(error)
   },
 )
 
