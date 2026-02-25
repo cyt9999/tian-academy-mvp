@@ -1,8 +1,10 @@
 import { jwtDecode } from 'jwt-decode'
 import useTokenStore from '@/stores/token'
+import useAuthStore from '@/stores/auth'
 
 export default async () => {
   const tokenStore = useTokenStore()
+  const authStore = useAuthStore()
 
   // 先清除在localStorage中不完整授權的請求
   tokenStore.clearIncompleteAuthorize()
@@ -25,6 +27,7 @@ export default async () => {
         `${import.meta.env.VITE_CLIENT_ID}-token`,
         userToken.at,
       )
+      authStore.setLoginState(true)
     }
   } else {
     // 刪除使用者紀錄，防止有重複使用者紀錄的可能
