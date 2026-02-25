@@ -15,7 +15,7 @@ ARG VITE_ENV=development
 ARG VITE_APP_ID=3018
 ARG VITE_CLIENT_ID=cm-tian-compounding-web
 ARG VITE_BASE_URL=/tian-compoudning
-ARG VITE_APP_HOST=https://vantage-stg.cmoney.tw
+ARG VITE_APP_HOST=https://stging-vantage.cmoney.tw
 ARG VITE_AUTH_HOST=https://development-auth.cmoney.tw
 ARG GEMINI_API_KEY
 ARG VITE_API_BASE_URL
